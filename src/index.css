@@ -1,0 +1,49 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+    scroll-padding-top: 4.6rem;
+    color-scheme: dark;
+  }
+  body {
+    @apply bg-pv-bg font-body text-pv-cream antialiased;
+    overflow-x: hidden;
+  }
+  /* warm red/gold ambient field behind everything */
+  body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    z-index: -2;
+    background:
+      radial-gradient(1100px 700px at 80% -10%, rgba(255, 42, 42, 0.18), transparent 55%),
+      radial-gradient(900px 600px at 0% 108%, rgba(255, 192, 30, 0.12), transparent 55%),
+      #0a0a0c;
+  }
+}
+
+@layer components {
+  .pv-btn {
+    @apply relative inline-flex items-center justify-center gap-2 overflow-hidden rounded-full bg-gradient-to-br from-pv-red to-pv-red-deep px-7 py-3.5 font-display uppercase tracking-wide text-white shadow-lg shadow-pv-red/40 transition-transform duration-200 hover:-translate-y-0.5;
+  }
+  .pv-btn-gold {
+    @apply relative inline-flex items-center justify-center gap-2 overflow-hidden rounded-full bg-gradient-to-br from-pv-gold-light to-pv-gold px-7 py-3.5 font-display uppercase tracking-wide text-pv-bg shadow-lg shadow-pv-gold/40 transition-transform duration-200 hover:-translate-y-0.5;
+  }
+  .pv-btn-ghost {
+    @apply inline-flex items-center justify-center gap-2 rounded-full border-2 border-pv-gold/30 px-6 py-3 font-display uppercase tracking-wide text-pv-cream transition-colors duration-200 hover:border-pv-gold hover:text-pv-gold;
+  }
+  .pv-sheen {
+    @apply pointer-events-none absolute left-0 top-0 h-full w-2/5 bg-gradient-to-r from-transparent via-white/50 to-transparent animate-shine;
+  }
+}
+
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+.no-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
